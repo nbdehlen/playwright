@@ -11,13 +11,13 @@ test.describe("width test", () => {
     await page.setViewportSize({ width: 700, height: 200 })
 
     const contents = page.locator("#component-wrapper")
-    await expect(contents).toHaveText("Window is wide")
+    await expect(contents).toHaveText(/Window is wide/)
   })
 
   test("when window is narrow", async ({ page }) => {
     await page.setViewportSize({ width: 500, height: 200 })
 
     const contents = page.locator("#component-wrapper")
-    await expect(contents).toHaveText("Window is narrow")
+    await expect(contents).toHaveText(/Window is narrow/)
   })
 })

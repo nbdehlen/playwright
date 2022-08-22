@@ -5,14 +5,16 @@ const WindowWidth = () => {
 
   useEffect(() => {
     const listener = () => setWindowWidth(window.innerWidth)
-    // setTimeout(() => {
     window.addEventListener("resize", listener)
-    // }, 4000)
 
     return () => window.removeEventListener("resize", listener)
   }, [])
 
-  return <p>Window is {windowWidth > 600 ? "wide" : "narrow"}</p>
+  return (
+    <p>
+      Window is {windowWidth > 600 ? "wide" : "narrow"} {windowWidth}
+    </p>
+  )
 }
 
 export default WindowWidth
