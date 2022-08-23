@@ -6,6 +6,3 @@ test("Render static text", () => {
   const linkElement = screen.getByText(/Users:/i)
   expect(linkElement).toBeInTheDocument()
 })
-
-// TODO:
-// Setup testing w react-testing-library, jest, enzyme

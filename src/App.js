@@ -4,6 +4,13 @@ import axios from "axios"
 import { formatUserName } from "./utils"
 import Todo from "./components/Todo/Todo"
 
+/**
+ * - Unit test Todo functions
+ * - Component render test
+ * - Integration test Todo actions
+ * - e2e test create, remove, edit
+ */
+
 function App() {
   const [users, setUsers] = useState([])
 

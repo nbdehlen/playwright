@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getTodos, editTodos } from "./Utils"
+import { getTodos, editTodos } from "./utils"
 
 const Todo = () => {
   const [todos, setTodos] = useState([])
