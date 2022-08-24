@@ -1,31 +1,38 @@
 export const getTodos = () => {
   const todos = localStorage.getItem("todos")
-  console.log(JSON.stringify(todos, null, 2))
   return todos?.length > 0 ? JSON.parse(todos) : []
 }
-export const createTodo = (todo) => {
-  console.log(JSON.stringify([...getTodos(), todo]))
-  const newTodos = [...getTodos(), todo]
-  localStorage.setItem("todos", JSON.stringify(newTodos))
-  return newTodos
-}
-export const deleteTodo = (todoIndex) => {
+export const deleteTodo = (todo) => {
   const oldTodos = getTodos()
-  const newTodos = [
+  const todoIndex = oldTodos.findIndex((obj) => obj.id === todo.id)
+  const updatedTodos = [
     ...oldTodos.slice(0, todoIndex),
     ...oldTodos.slice(todoIndex + 1, oldTodos.length),
   ]
-  localStorage.setItem("todos", JSON.stringify(newTodos))
-  return newTodos
+
+  localStorage.setItem("todos", JSON.stringify(updatedTodos))
+  return updatedTodos
 }
+
 export const editTodos = (todo) => {
   const oldTodos = getTodos()
-  const newTodos = [
-    ...oldTodos.slice(0, todo.order),
-    todo,
-    ...oldTodos.slice(todo.order + 1, oldTodos.length),
-  ]
-  console.log({ newTodos })
+  const todoIndex = oldTodos.findIndex((obj) => {
+    console.log(obj.id, todo.id)
+
+    return obj.id === todo.id
+  })
+  let newTodos = []
+
+  if (todoIndex >= 0) {
+    newTodos = [
+      ...oldTodos.slice(0, todoIndex),
+      todo,
+      ...oldTodos.slice(todoIndex + 1, oldTodos.length),
+    ]
+  } else {
+    newTodos = [...oldTodos, todo]
+  }
+
   localStorage.setItem("todos", JSON.stringify(newTodos))
   return newTodos
 }

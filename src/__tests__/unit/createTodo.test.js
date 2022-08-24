@@ -1,4 +1,4 @@
-import { createTodo, getTodos } from "../../components/Todo/utils"
+import { editTodos, getTodos } from "../../components/Todo/utils"
 
 describe("It should create a todo in localStorage under key 'todos'", () => {
   beforeEach(() => {
@@ -9,8 +9,9 @@ describe("It should create a todo in localStorage under key 'todos'", () => {
   it("Should create one todo note", () => {
     const todo = {
       body: "example text",
+      id: Math.random(),
     }
-    createTodo(todo)
+    editTodos(todo)
     const savedTodos = getTodos()
     expect(savedTodos[0].body).toEqual(todo.body)
   })
