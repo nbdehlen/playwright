@@ -6,7 +6,7 @@ describe("It should retrieve the todo list in localStorage under key 'todos'", (
     localStorage.removeItem("todos")
   })
 
-  it("Should retreive two todos", () => {
+  it("Should retreive two todos from localStorage", () => {
     const todos = [
       {
         body: "example text",
@@ -22,7 +22,7 @@ describe("It should retrieve the todo list in localStorage under key 'todos'", (
     expect(savedTodos.length).toEqual(2)
   })
 
-  it("Should not return any todos", () => {
+  it("Should not return any todos from localStorage", () => {
     const todos = getTodos()
     expect(todos.length).toEqual(0)
   })

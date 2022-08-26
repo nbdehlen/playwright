@@ -6,7 +6,7 @@ describe("It should create a todo in localStorage under key 'todos'", () => {
     localStorage.removeItem("todos")
   })
 
-  it("Should create one todo note", () => {
+  it("Should create one todo note in localStorage", () => {
     const todo = {
       body: "example text",
       id: Math.random(),
@@ -16,7 +16,7 @@ describe("It should create a todo in localStorage under key 'todos'", () => {
     expect(savedTodos[0].body).toEqual(todo.body)
   })
 
-  it("Should create an empty todo note", () => {
+  it("Should create an empty todo note in localStorage", () => {
     const todo = {
       body: "",
       id: Math.random(),

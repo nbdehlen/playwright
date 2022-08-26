@@ -23,7 +23,7 @@ describe("It should edit a todo in localStorage under key 'todos'", () => {
     expect(savedTodos[0].body).toEqual(newTodo.body)
   })
 
-  it("Should fail to edit a non-existing todo note and create a new one instead", () => {
+  it("Should fail to edit a non-existing todo note and create a new one instead in localStorage", () => {
     const todo = {
       body: "",
       id: Math.random(),
