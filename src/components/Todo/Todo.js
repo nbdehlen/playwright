@@ -26,8 +26,8 @@ const Todo = () => {
     setEditTodo(null)
   }
 
-  const onClickDeleteTodo = (todo) => {
-    const updatedTodos = deleteTodo(todo)
+  const onClickDeleteTodo = (todoId) => {
+    const updatedTodos = deleteTodo(todoId)
     setTodos(updatedTodos)
     setEditTodo(null)
   }
@@ -48,7 +48,7 @@ const Todo = () => {
           color: "#fafafa",
           fontSize: 16,
         }}
-        data-test-id="todo-list-input"
+        data-testid="todo-list-input"
       />
       <button
         style={{
@@ -62,12 +62,12 @@ const Todo = () => {
           backgroundColor: "#007bff",
           borderRadius: 8,
         }}
-        data-test-id="todo-list-submit"
+        data-testid="todo-list-submit"
         onClick={onClickSaveTodo}
       >
         Save
       </button>
-      <div style={{ backgroundColor: "#555" }} data-test-id="todo-list">
+      <div style={{ backgroundColor: "#555" }} data-testid="todo-list">
         {todos &&
           todos.map((todo, i) => (
             <div key={todo.id}>
@@ -79,7 +79,7 @@ const Todo = () => {
               >
                 <div
                   style={{ maxWidth: 300 }}
-                  data-test-id={`todo-item-${i}-body`}
+                  data-testid={`todo-item-${i}-body`}
                 >
                   {todo?.body}
                 </div>
@@ -95,7 +95,7 @@ const Todo = () => {
                       borderRadius: 8,
                       marginRight: 8,
                     }}
-                    data-test-id={`todo-item-${i}-edit`}
+                    data-testid={`todo-item-${i}-edit`}
                     onClick={() => handleEditTodo(todo)}
                   >
                     Edit
@@ -110,8 +110,8 @@ const Todo = () => {
                       backgroundColor: "red",
                       borderRadius: 8,
                     }}
-                    data-test-id={`todo-item-${i}-remove`}
-                    onClick={() => onClickDeleteTodo(todo)}
+                    data-testid={`todo-item-${i}-remove`}
+                    onClick={() => onClickDeleteTodo(todo.id)}
                   >
                     Delete
                   </button>

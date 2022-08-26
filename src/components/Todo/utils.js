@@ -2,9 +2,9 @@ export const getTodos = () => {
   const todos = localStorage.getItem("todos")
   return todos?.length > 0 ? JSON.parse(todos) : []
 }
-export const deleteTodo = (todo) => {
+export const deleteTodo = (todoId) => {
   const oldTodos = getTodos()
-  const todoIndex = oldTodos.findIndex((obj) => obj.id === todo.id)
+  const todoIndex = oldTodos.findIndex((obj) => obj.id === todoId)
   const updatedTodos = [
     ...oldTodos.slice(0, todoIndex),
     ...oldTodos.slice(todoIndex + 1, oldTodos.length),
@@ -17,8 +17,6 @@ export const deleteTodo = (todo) => {
 export const editTodos = (todo) => {
   const oldTodos = getTodos()
   const todoIndex = oldTodos.findIndex((obj) => {
-    console.log(obj.id, todo.id)
-
     return obj.id === todo.id
   })
   let newTodos = []
