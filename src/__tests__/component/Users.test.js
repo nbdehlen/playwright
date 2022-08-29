@@ -28,7 +28,6 @@ test("Users", async () => {
   await waitFor(async () => screen.findByTestId("actual-users"))
   const actualUsers = await screen.findByTestId("actual-users")
 
-  // console.log(actualUsers.firstChild.textContent, "BABA")
   expect(actualUsers.childElementCount).toBe(2)
 
   // check that loading doesnt exist anymore

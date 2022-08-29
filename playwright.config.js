@@ -7,7 +7,7 @@ const config = {
     port: 3000,
     timeout: 120 * 1000,
   },
-  reporter: "dot",
+  reporter: "list",
   projects: [
     {
       name: "Smoke WebKit",

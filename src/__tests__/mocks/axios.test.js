@@ -22,9 +22,9 @@ test("Mock axios", async () => {
 
   render(<Users />)
 
+  // fix act warning (and wait for users).
+  await waitFor(async () => screen.findByTestId("actual-users"))
+
   expect(mockedAxios.get).toHaveBeenCalledTimes(1)
   expect(mockedAxios.get).toHaveBeenCalledWith(url)
-
-  // fix act warning
-  await waitFor(async () => screen.findByTestId("actual-users"))
 })
