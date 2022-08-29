@@ -1,10 +1,10 @@
-import { fireEvent, render, screen } from "@testing-library/react"
-import Todo from "../../../components/Todo/Todo"
-import { editTodos } from "../../../components/Todo/utils"
+import { cleanup, fireEvent, render, screen } from "@testing-library/react"
+import Todo from "../../components/Todo/Todo"
+import { editTodos } from "../../components/Todo/utils"
 
-// black-box tests
-beforeEach(() => {
+afterEach(() => {
   localStorage.removeItem("todos")
+  cleanup()
 })
 
 test("Render one todo item", async () => {

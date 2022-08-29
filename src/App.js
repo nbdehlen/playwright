@@ -1,50 +1,11 @@
-import WindowWidth from "./components/WindowWidth/WindowWidth"
-import { useEffect, useState } from "react"
-import axios from "axios"
-import { formatUserName } from "./utils"
 import Todo from "./components/Todo/Todo"
-
-/**
- * - Unit test Todo functions
- * - Component render test
- * - Integration test Todo actions
- * - e2e test create, remove, edit
- */
+import Users from "./components/Users/Users"
 
 function App() {
-  const [users, setUsers] = useState([])
-
-  useEffect(() => {
-    let mounted = true
-
-    const getUsers = async () => {
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/users"
-      )
-      if (mounted) {
-        setUsers(response.data)
-        console.log(response.data)
-      }
-    }
-    getUsers()
-  }, [])
-
   return (
     <div style={containerStyle}>
       <div style={sectionStyle}>
-        <h2>Users:</h2>
-        <div>
-          {users.map((user) => (
-            <div key={user.name}>{`${user.name} ${formatUserName(
-              user.username
-            )}`}</div>
-          ))}
-        </div>
-      </div>
-
-      <div id="component-wrapper" style={sectionStyle}>
-        <h2>Window width:</h2>
-        <WindowWidth />
+        <Users />
       </div>
 
       <div style={sectionStyle}>
