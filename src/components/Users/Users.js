@@ -1,6 +1,6 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
-import { formatUserName } from "../../utils"
+import User from "../User/User"
 
 const Users = () => {
   const [users, setUsers] = useState([])
@@ -12,7 +12,9 @@ const Users = () => {
         "https://jsonplaceholder.typicode.com/users"
       )
       setLoadingUsers(false)
-      setUsers(response.data)
+      if (response?.data) {
+        setUsers(response.data)
+      }
     }
     getUsers()
   }, [])
@@ -24,20 +26,7 @@ const Users = () => {
         {!loadingUsers && (
           <div data-testid="actual-users">
             {users.map((user) => (
-              <div key={user.name}>
-                <p>
-                  {user.name}
-                  {" - "}
-                  <i>
-                    <a
-                      style={{ fontSize: 14, color: "white" }}
-                      href="www.google.se"
-                    >
-                      {formatUserName(user.username)}
-                    </a>
-                  </i>
-                </p>
-              </div>
+              <User key={user.name} user={user} />
             ))}
           </div>
         )}

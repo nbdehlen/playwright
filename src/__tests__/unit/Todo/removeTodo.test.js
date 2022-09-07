@@ -5,27 +5,22 @@ describe("It should remove a todo in localStorage under key 'todos'", () => {
     // clear storage
     localStorage.removeItem("todos")
   })
+
   const todoId = Math.random()
+
   it("Should remove a todo note", () => {
+    /* Arrange */
     const todo = {
       body: "example text",
       id: todoId,
     }
     editTodos(todo)
 
+    /* Act */
     deleteTodo(todoId)
 
+    /* Assert */
     const savedTodos = getTodos()
     expect(savedTodos.length).toBe(0)
-  })
-
-  it("Should fail to edit a non-existing todo note and create a new one instead", () => {
-    const todo = {
-      body: "",
-      id: Math.random(),
-    }
-    editTodos(todo)
-    const savedTodos = getTodos()
-    expect(savedTodos[0].body).toEqual(todo.body)
   })
 })

@@ -1,10 +1,12 @@
-import { cleanup, render, screen, waitFor } from "@testing-library/react"
+import { cleanup, render, screen } from "@testing-library/react"
 import mockedAxios from "axios"
+import { BrowserRouter } from "react-router-dom"
 import Users from "../../components/Users/Users"
 
 afterEach(cleanup)
 
 test("Users", async () => {
+  /* Arrange */
   const mockUsers = [
     {
       id: 1,
@@ -17,19 +19,20 @@ test("Users", async () => {
       username: "Antonette",
     },
   ]
+
+  /* Act */
   await mockedAxios.get.mockResolvedValue({ data: mockUsers })
 
-  render(<Users />)
+  render(<Users />, { wrapper: BrowserRouter })
 
+  /* Assert */
   const loadingText = await screen.findByTestId("loading-users")
-
+  // TODO: Test for something more stable than "Loading..."
   expect(loadingText.textContent).toBe("Loading...")
 
-  await waitFor(async () => screen.findByTestId("actual-users"))
   const actualUsers = await screen.findByTestId("actual-users")
-
   expect(actualUsers.childElementCount).toBe(2)
 
-  // check that loading doesnt exist anymore
+  // check that loading doesn't exist anymore
   expect(loadingText).not.toBeInTheDocument()
 })
